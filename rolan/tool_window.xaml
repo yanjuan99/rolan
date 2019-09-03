@@ -1,0 +1,52 @@
+﻿<Window x:Class="rolan.tool_window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:rolan"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d" WindowStyle="None" ResizeMode="NoResize"
+        Style="{StaticResource for_noresize_window}"
+        Title="tool_window" Height="340" Width="240">
+
+    <DockPanel>
+        <!-- 
+        <Grid DockPanel.Dock="Top" Height="10" Background="Purple" MouseMove="tool_window_move">
+        </Grid>
+        -->
+        <Grid>
+            <materialDesign:DialogHost DialogClosing="Sample5_DialogHost_OnDialogClosing" Style="{StaticResource MaterialDesignEmbeddedDialogHost}" DialogMargin="8">
+                <materialDesign:DialogHost.DialogContent>
+                    <StackPanel Margin="16" Width="110">
+                        <TextBlock>添加一个新目录</TextBlock>
+                        <TextBox Margin="0 8 0 0" HorizontalAlignment="Stretch" x:Name="AnimalTextBox" />
+                        <Button Style="{StaticResource MaterialDesignFlatButton}" IsDefault="True"  Margin="0 8 8 0" Click="add_click" Command="materialDesign:DialogHost.CloseDialogCommand">
+                            添加
+                        </Button>
+                    </StackPanel>
+                </materialDesign:DialogHost.DialogContent>
+                <Border BorderThickness="1" BorderBrush="{DynamicResource PrimaryHueMidBrush}" ClipToBounds="True" HorizontalAlignment="Stretch">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <ListBox x:Name="AnimalListBox" MouseDoubleClick="list_MouseDoubleClick">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Margin="10 0 0 0" Text="{Binding Name,Mode=TwoWay}" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="微软雅黑"/>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                        <materialDesign:ColorZone  Mode="PrimaryMid" Grid.Row="1" Effect="{DynamicResource MaterialDesignShadowDepth5}">
+                            <TextBlock Margin="16">添加目录</TextBlock>
+                        </materialDesign:ColorZone>
+                        <Button Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"  VerticalAlignment="Bottom"  HorizontalAlignment="Right"  Grid.Row="0" Margin="0 0 28 -20">
+                            <materialDesign:PackIcon  Kind="Plus" Height="22" Width="22" />
+                        </Button>
+                    </Grid>
+                </Border>
+            </materialDesign:DialogHost>
+        </Grid>
+    </DockPanel>
+</Window>
